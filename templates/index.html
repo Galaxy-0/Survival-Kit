@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发者生存工具箱</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold">开发者生存工具箱</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- 预警信息 -->
+        <div id="alerts" class="mb-8">
+            <h2 class="text-lg font-semibold mb-4">系统预警</h2>
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6" id="alerts-content">
+                    <!-- 动态加载预警信息 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 机会雷达 -->
+        <div id="opportunities" class="mb-8">
+            <h2 class="text-lg font-semibold mb-4">机会雷达</h2>
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6" id="opportunities-content">
+                    <!-- 动态加载机会信息 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 财务概览 -->
+        <div id="finance" class="mb-8">
+            <h2 class="text-lg font-semibold mb-4">财务概览</h2>
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6" id="finance-content">
+                    <!-- 动态加载财务信息 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 客户管理 -->
+        <div id="clients" class="mb-8">
+            <h2 class="text-lg font-semibold mb-4">客户管理</h2>
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6" id="clients-content">
+                    <!-- 动态加载客户信息 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
