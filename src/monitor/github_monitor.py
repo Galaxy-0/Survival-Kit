@@ -14,9 +14,9 @@ class GitHubMonitor:
         self.base_url = "https://api.github.com"
         
         # 监控配置
-        self.min_stars = 100
-        self.min_forks = 20
-        self.days_since_update = 30
+        self.min_stars = int(os.getenv('MIN_STARS', 100))
+        self.min_forks = int(os.getenv('MIN_FORKS', 20))
+        self.days_since_update = int(os.getenv('DAYS_SINCE_UPDATE', 30))
         
         # 关键词配置
         self.keywords = [
@@ -30,7 +30,7 @@ class GitHubMonitor:
         trending_repos = []
         
         for keyword in self.keywords:
-            query = f"{keyword} stars:>{self.min_stars} forks:>{self.min_forks} pushed:>{self.days_since_update}d"
+            query = f"{keyword} stars:>{self.min_stars}"  # 简化搜索条件
             url = f"{self.base_url}/search/repositories"
             params = {
                 'q': query,
@@ -43,7 +43,7 @@ class GitHubMonitor:
                 response.raise_for_status()
                 data = response.json()
                 
-                for repo in data.get('items', []):
+                for repo in data.get('items', [])[:5]:  # 每个关键词只取前5个结果
                     repo_info = self._extract_repo_info(repo)
                     if repo_info:
                         trending_repos.append(repo_info)
